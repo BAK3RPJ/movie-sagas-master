@@ -28,11 +28,11 @@ function* fetchMoviesSaga() {
     }
 }
 
-function* fetchMovieDetailsSaga() {
+function* fetchMovieDetailsSaga(action) {
     try {
-        const detailsResponse = yield axios.get('/details');
+        const detailsResponse = yield axios.get(`/details/${action.payload}`);
         console.log(detailsResponse.data);
-        yield put ({type: 'GET_MOVIES', payload: detailsResponse.data});
+        yield put ({type: 'GET_DETAILS', payload: detailsResponse.data});
     } catch {
         console.log('error fetching movie details');
     }

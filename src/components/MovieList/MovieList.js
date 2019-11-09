@@ -26,7 +26,12 @@ class MovieList extends Component {
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_MOVIES'})
     }
-
+    
+    handleImageClick = (id) => {
+        this.props.dispatch({type: 'FETCH_DETAILS', payload: id});
+        console.log(id);
+    }
+    
   render() {
     return (
         <>
@@ -36,8 +41,8 @@ class MovieList extends Component {
             </div>
             <div className="movie-container">
             {this.props.movies.map(movie => (
-                <Card style={{maxWidth: 345}} className="card" onCLick={() => this.handleImageClick(movie.id)}>
-                <CardActionArea>
+                <Card style={{maxWidth: 345}} className="card" key={movie.id}>
+                <CardActionArea onClick={() => this.handleImageClick(movie.id)}>
                   <CardMedia
                     style={{height: 400}}
                     image= {movie.poster}
