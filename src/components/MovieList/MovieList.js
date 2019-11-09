@@ -36,7 +36,7 @@ class MovieList extends Component {
             </div>
             <div className="movie-container">
             {this.props.movies.map(movie => (
-                <Card style={{maxWidth: 345}} className="card">
+                <Card style={{maxWidth: 345}} className="card" onCLick={() => this.handleImageClick(movie.id)}>
                 <CardActionArea>
                   <CardMedia
                     style={{height: 400}}
@@ -62,9 +62,8 @@ class MovieList extends Component {
                 </CardActions>
               </Card>
             ))}
-            
-          <pre>{JSON.stringify(this.props, null, 2)}</pre>
         </div>
+        <pre>{JSON.stringify(this.props, null, 2)}</pre>
       </>
     );
   }
