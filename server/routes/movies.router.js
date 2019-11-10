@@ -34,38 +34,6 @@ router.get('/', (req, res) => {
 //     });
 // });
 
-// router.put('/', (req, res) => {
-//   const updatedPlant = req.body;
-
-//   const queryText = `UPDATE plant
-//   SET "name" = $1, 
-//   "kingdom" = $2, 
-//   "clade" = $3, 
-//   "order" = $4, 
-//   "family" = $5, 
-//   "subfamily" = $6, 
-//   "genus" = $7
-//   WHERE id=$8;`;
-
-//   const queryValues = [
-//     updatedPlant.name,
-//     updatedPlant.kingdom,
-//     updatedPlant.clade,
-//     updatedPlant.order,
-//     updatedPlant.family,
-//     updatedPlant.subfamily,
-//     updatedPlant.genus,
-//     updatedPlant.id,
-//   ];
-
-//   pool.query(queryText, queryValues)
-//     .then(() => { res.sendStatus(200); })
-//     .catch((err) => {
-//       console.log('Error completing SELECT plant query', err);
-//       res.sendStatus(500);
-//     });
-// });
-
 // router.delete('/:id', (req, res) => {
 //   const queryText = 'DELETE FROM plant WHERE id=$1';
 //   pool.query(queryText, [req.params.id])

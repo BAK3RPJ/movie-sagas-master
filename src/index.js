@@ -16,6 +16,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMoviesSaga);
     yield takeEvery('FETCH_DETAILS', fetchMovieDetailsSaga);
+    yield takeEvery('PUT_EDITS', putMovieDetailsSaga);
 }
 
 function* fetchMoviesSaga() {
@@ -38,6 +39,15 @@ function* fetchMovieDetailsSaga(action) {
     }
 }
 
+function* putMovieDetailsSaga(action) {
+    try {
+        yield axios.put(`/details`, action.payload);
+        yield put ({type: 'FETCH_DETAILS', payload: action.payload.id});
+    } catch {
+        console.log('error updating movie details');
+    }
+}
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -57,6 +67,7 @@ const details = (state = [], action) => {
     switch (action.type) {
         case 'GET_DETAILS':
             return {
+                id: action.payload[0].id,
                 title: action.payload[0].title,
                 poster: action.payload[0].poster,
                 description: action.payload[0].description,

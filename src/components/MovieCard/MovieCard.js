@@ -49,15 +49,15 @@ class MovieCard extends Component {
                 </CardActionArea>
                 <CardActions>
                     {this.props.showEditButton &&
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" onClick={() => this.props.history.push('/edit')}>
                         Edit
                         </Button>
                     }
-                  {this.props.clickId && 
-                 <Button size="small" color="primary" onClick={() => this.handleImageClick(this.props.clickId)}>
-                 Learn More
-                </Button>
-                }
+                    {this.props.clickId && 
+                        <Button size="small" color="primary" onClick={() => this.handleImageClick(this.props.clickId)}>
+                        Learn More
+                        </Button>
+                    }
                 </CardActions>
             </Card>
         );
