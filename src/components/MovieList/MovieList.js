@@ -31,6 +31,7 @@ class MovieList extends Component {
             title={movie.title}
             cardWidth={345}
             imageHeight={400}
+            showEditButton={false}
             />
             )}
         </div>
