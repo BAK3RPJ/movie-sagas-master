@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     console.log(req.params.id)
-  const queryText = `SELECT "genres".name, "movies".title, "movies".poster, "movies".description FROM "genres"
+  const queryText = `SELECT "movies"."id", "genres".name, "movies".title, "movies".poster, "movies".description FROM "genres"
     JOIN "movie-genres" ON "movie-genres"."genre-id" = "genres"."id"
     JOIN "movies" ON "movies"."id" = "movie-genres"."movie-id"
     WHERE "movies"."id" =$1;`;
