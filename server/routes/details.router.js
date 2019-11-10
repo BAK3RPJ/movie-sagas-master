@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => { // Gets chosen columns through a JOIN to send back to saga for details
     console.log(req.params.id)
   const queryText = `SELECT "movies"."id", "genres".name, "movies".title, "movies".poster, "movies".description FROM "genres"
     JOIN "movie-genres" ON "movie-genres"."genre-id" = "genres"."id"
@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.put('/', (req, res) => {
+router.put('/', (req, res) => { // updats chosen film in database
     const updatedMovie = req.body;
   
     const queryText = `UPDATE "movies"

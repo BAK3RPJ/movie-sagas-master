@@ -12,8 +12,8 @@ import Typography from '@material-ui/core/Typography';
 
 class MovieCard extends Component {
 
-    handleImageClick = (id) => {
-        this.props.dispatch({ type: 'FETCH_DETAILS', payload: id });
+    handleLearnMoreClick = (id) => {
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: id }); // fetches details of chosen movie from database with fetchMovieDetailsSaga
         console.log(id);
         this.props.history.push('/details')
     }
@@ -34,7 +34,8 @@ class MovieCard extends Component {
                         <Typography variant="body2" color="textSecondary" component="p">
                             {this.props.description}
                             {
-                                this.props.movieDetails && this.props.movieDetails.genres &&
+                                // renders genres onto DOM if details reducer contains data
+                                this.props.movieDetails && this.props.movieDetails.genres && 
                             <>
                             <br />
                             <br />
@@ -48,13 +49,13 @@ class MovieCard extends Component {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    {this.props.showEditButton &&
+                    {this.props.showEditButton && // renders edit button of showEditButton prop is set to true
                         <Button size="small" color="primary" onClick={() => this.props.history.push('/edit')}>
                         Edit
                         </Button>
                     }
-                    {this.props.clickId && 
-                        <Button size="small" color="primary" onClick={() => this.handleImageClick(this.props.clickId)}>
+                    {this.props.clickId && // renders learnMore button if clickID prop set to true
+                        <Button size="small" color="primary" onClick={() => this.handleLearnMoreClick(this.props.clickId)}>
                         Learn More
                         </Button>
                     }
