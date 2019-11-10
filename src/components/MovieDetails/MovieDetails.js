@@ -7,11 +7,6 @@ class MovieList extends Component {
         this.props.dispatch({type: 'FETCH_MOVIES'})
     }
     
-    handleImageClick = (id) => {
-        this.props.dispatch({type: 'FETCH_DETAILS', payload: id});
-        console.log(id);
-    }
-    
   render() {
     return (
         <>
@@ -19,8 +14,8 @@ class MovieList extends Component {
                 <h1> Details Page</h1>
             </div>
             <div className="movie-container">
-                { this.props.details &&
-                    <MovieCard 
+                { this.props.details && // checks for details reducer being truthy before rendering
+                    <MovieCard // details reducer properties for MovieCard component
                     id={this.props.details.id}
                     poster={this.props.details.poster}
                     description={this.props.details.description}

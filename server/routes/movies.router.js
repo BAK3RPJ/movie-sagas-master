@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { // fetches all movie data from movies table in db
   const queryText = 'SELECT * FROM "movies" ORDER BY id';
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })

@@ -4,13 +4,7 @@ import MovieCard from '../MovieCard/MovieCard';
 
 class MovieList extends Component {
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_MOVIES'})
-    }
-    
-    handleImageClick = (id) => {
-        this.props.dispatch({type: 'FETCH_DETAILS', payload: id});
-        console.log(id);
-        this.props.history.push('/details')
+        this.props.dispatch({type: 'FETCH_MOVIES'}) // runs fetchMoviesSaga to retrieve all movie data from DB
     }
 
   render() {
@@ -21,7 +15,7 @@ class MovieList extends Component {
                 <h3>Feel free to click on movies to see more details about them.</h3>
             </div>
             <div className="movie-container">
-            {this.props.movies.map(movie => 
+            {this.props.movies.map(movie => // accesses movie reducer to map movies onto DOM
             <MovieCard
             key={movie.id} 
             id={movie.id}
