@@ -63,7 +63,7 @@ class EditMovieDetails extends Component {
             <Button 
             variant="outlined" 
             color="primary"
-            onClick={() => () => this.handleSave()}>Save</Button>
+            onClick={() => this.handleSave()}>Save</Button>
             <Button 
             variant="outlined" 
             color="secondary"
