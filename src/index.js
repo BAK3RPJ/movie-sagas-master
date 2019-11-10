@@ -57,6 +57,7 @@ const details = (state = [], action) => {
     switch (action.type) {
         case 'GET_DETAILS':
             return {
+                id: action.payload[0].id,
                 title: action.payload[0].title,
                 poster: action.payload[0].poster,
                 description: action.payload[0].description,

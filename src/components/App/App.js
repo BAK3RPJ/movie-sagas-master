@@ -5,6 +5,7 @@ import './App.css';
 // import Routes
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import EditMovieDetails from '../EditMovieDetails/EditMovieDetails';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -14,7 +15,8 @@ class App extends Component {
       <div className="App">
       </div>
       <Route exact path="/" component={MovieList}></Route>
-      <Route exact path="/details" component={MovieDetails}></Route>
+      <Route path="/details" component={MovieDetails}></Route>
+      <Route path="/edit" component={EditMovieDetails}></Route>
       </Router>
     );
   }
