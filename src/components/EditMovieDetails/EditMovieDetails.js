@@ -34,7 +34,7 @@ class EditMovieDetails extends Component {
     }
 
     handleSave = () => {
-      this.props.dispatch({type: 'PUT_EDITS', payload: this.state})
+      this.props.dispatch({type: 'PUT_EDITS', payload: this.state});
       this.props.history.push('/details');
     }
     
@@ -44,11 +44,10 @@ class EditMovieDetails extends Component {
             <div className="header">
                 <h1> Details Page</h1>
             </div>
-            <div class="form-container">
+            <div className="form-container">
               <TextField
             label="Movie Title"
             defaultValue={this.props.details.title}
-            value={this.state.title}
             margin="normal"
             variant="filled"
             onChange={(event) => this.handleInputChange(event, 'title')}
@@ -56,7 +55,6 @@ class EditMovieDetails extends Component {
             <TextField
             label="Movie Description"
             defaultValue={this.props.details.description}
-            value={this.state.description}
             multiline
             margin="normal"
             variant="filled"
@@ -65,11 +63,11 @@ class EditMovieDetails extends Component {
             <Button 
             variant="outlined" 
             color="primary"
-            onClick={() => this.props.dispatch('/details')}>Save</Button>
+            onClick={() => () => this.handleSave()}>Save</Button>
             <Button 
             variant="outlined" 
             color="secondary"
-            onClick={() => this.handleSave}
+            onClick={() => this.props.history.push('/details')}
             >Cancel</Button>
             </div>
             <div className="movie-container">

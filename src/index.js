@@ -16,6 +16,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMoviesSaga);
     yield takeEvery('FETCH_DETAILS', fetchMovieDetailsSaga);
+    yield takeEvery('PUT_EDITS', putMovieDetailsSaga);
 }
 
 function* fetchMoviesSaga() {
@@ -35,6 +36,15 @@ function* fetchMovieDetailsSaga(action) {
         yield put ({type: 'GET_DETAILS', payload: detailsResponse.data});
     } catch {
         console.log('error fetching movie details');
+    }
+}
+
+function* putMovieDetailsSaga(action) {
+    try {
+        yield axios.put(`/details`, action.payload);
+        yield put ({type: 'FETCH_DETAILS', payload: action.payload.id});
+    } catch {
+        console.log('error updating movie details');
     }
 }
 
