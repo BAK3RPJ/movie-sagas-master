@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
         res.send(result.rows); 
     })
     .catch((err) => {
-      console.log('Error completing SELECT movies query', err);
+      console.log('Error completing SELECT details query', err);
       res.sendStatus(500);
     });
 });

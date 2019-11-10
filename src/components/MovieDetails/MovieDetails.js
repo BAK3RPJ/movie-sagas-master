@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 // material ui imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,17 +11,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-// const useStyles = makeStyles({
-//     card: {
-//       maxWidth: 345,
-//     },
-//     media: {
-//       height: 140,
-//     },
-//   });
-
-//   const classes = useStyles();
-
 class MovieList extends Component {
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_MOVIES'})
@@ -29,31 +19,35 @@ class MovieList extends Component {
     handleImageClick = (id) => {
         this.props.dispatch({type: 'FETCH_DETAILS', payload: id});
         console.log(id);
-        this.props.history.push('/details')
     }
-
+    
   render() {
     return (
         <>
             <div className="header">
-                <h1> This is a list of movies that I love!</h1>
-                <h3>Feel free to click on movies to see more details about them.</h3>
+                <h1> Details Page</h1>
             </div>
             <div className="movie-container">
-            {this.props.movies.map(movie => (
-                <Card style={{maxWidth: 345}} className="card" key={movie.id}>
+                { this.props.details &&
+                <Card style={{maxWidth: 345}} className="card">
                 <CardActionArea>
                   <CardMedia
                     style={{height: 400}}
-                    image= {movie.poster}
-                    title={movie.title}
+                    image= {this.props.details.poster}
+                    title={this.props.details.title}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {movie.title}
+                      {this.props.details.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      {movie.description}
+                      {this.props.details.description}
+                      <br/>
+                      <br/>
+                      <b>GENRES:</b>
+                      <ul>
+                      {this.props.details && this.props.details.genres && this.props.details.genres.map(genre => <li>{genre}</li>)}
+                      </ul>
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -61,12 +55,12 @@ class MovieList extends Component {
                   <Button size="small" color="primary">
                     Share
                   </Button>
-                  <Button size="small" color="primary" onClick={() => this.handleImageClick(movie.id)}>
+                  <Button size="small" color="primary">
                     Learn More
                   </Button>
                 </CardActions>
               </Card>
-            ))}
+              }
         </div>
         <pre>{JSON.stringify(this.props, null, 2)}</pre>
       </>

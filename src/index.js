@@ -56,7 +56,12 @@ const movies = (state = [], action) => {
 const details = (state = [], action) => {
     switch (action.type) {
         case 'GET_DETAILS':
-            return action.payload;
+            return {
+                title: action.payload[0].title,
+                poster: action.payload[0].poster,
+                description: action.payload[0].description,
+                genres: action.payload.map(movie => movie.name)
+            }
         default:
             return state;
     }
