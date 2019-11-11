@@ -62,6 +62,7 @@ class EditMovieDetails extends Component {
             multiline
             margin="normal"
             variant="filled"
+            maxWidth={400}
             onChange={(event) => this.handleInputChange(event, 'description')}
             />
             <Button 

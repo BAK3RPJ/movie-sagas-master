@@ -23,8 +23,9 @@ class MovieList extends Component {
             poster={movie.poster}
             description={movie.description}
             title={movie.title}
-            cardWidth={345}
-            imageHeight={400}
+            cardWidth={200}
+            imageHeight={300}
+            textHeight={200}
             showEditButton={false}
             />
             )}
