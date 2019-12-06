@@ -30,7 +30,6 @@ class MovieList extends Component {
             />
             )}
         </div>
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
       </>
     );
   }
