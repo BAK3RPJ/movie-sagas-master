@@ -88,7 +88,6 @@ class EditMovieDetails extends Component {
                 showEditButton={false} // prevents edit button from showing in MovieCard component
                 />
         </div>
-        <pre>{JSON.stringify(this.props, null, 2)}</pre>
       </>
     );
   }
