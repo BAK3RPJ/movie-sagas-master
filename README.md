@@ -7,6 +7,8 @@ This project uses React, Redux, and Axios on the front end, alongside node and a
 
 The user can use the interface to see information about movies in the database. Users can click on the Learn More button to see the details page of that movie, and can press edit from there to edit the information of that movie. 
 
+See the deployed version [here](https://movies-list-react.herokuapp.com/).
+
 
 ## Usage
 
